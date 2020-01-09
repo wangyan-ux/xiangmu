@@ -18,8 +18,18 @@ child: Row(
     Container(
       child: Icon(Icons.pool,size: 32.0,color: Colors.white,),
       padding: EdgeInsets.all(8.0),
-      color: Color.fromRGBO(3, 54, 255, 1.0),
-      margin: EdgeInsets.all(5.0)
+      margin: EdgeInsets.all(5.0),
+      width: 90.0,
+      height:90.0,
+      decoration: BoxDecoration(
+         
+       border: Border.all(
+       color: Colors.black,
+        width: 8,
+    ),
+    borderRadius: BorderRadius.circular(12),
+
+      ),
     )
   ],
 ),
