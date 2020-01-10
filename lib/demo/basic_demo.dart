@@ -10,8 +10,9 @@ decoration: BoxDecoration(
   image: DecorationImage(
     image: NetworkImage('https://resources.ninghao.org/images/candy-shop.jpg'),
     alignment: Alignment.topCenter,
-    repeat: ImageRepeat.repeatY
-  )
+    fit: BoxFit.cover,
+    colorFilter: ColorFilter.mode(Colors.indigoAccent[400].withOpacity(0.5), BlendMode.hardLight)
+ )
   ),
 child: Row(
   children: <Widget>[
