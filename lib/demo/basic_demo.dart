@@ -6,7 +6,13 @@ class BasicDemo extends  StatelessWidget{
   Widget build(BuildContext context) {
    
 return Container(
-color:Colors.grey[100],
+decoration: BoxDecoration(
+  image: DecorationImage(
+    image: NetworkImage('https://resources.ninghao.org/images/candy-shop.jpg'),
+    alignment: Alignment.topCenter,
+    repeat: ImageRepeat.repeatY
+  )
+  ),
 child: Row(
   children: <Widget>[
     Container(
@@ -39,11 +45,13 @@ child: Row(
       
     ],
      shape:BoxShape.circle,
-     gradient: RadialGradient(
+     gradient: LinearGradient(
        colors:[
          Color.fromRGBO(7, 102, 255, 1.0),
          Color.fromRGBO(7, 102, 6, 1.0)
-       ]
+       ],
+       begin: Alignment.topCenter,
+       end: Alignment.bottomCenter
         )
 
       ),
