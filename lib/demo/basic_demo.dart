@@ -22,12 +22,29 @@ child: Row(
       width: 90.0,
       height:90.0,
       decoration: BoxDecoration(
+        border: Border.all(
+        color: Colors.black,
+         width: 8,
          
-       border: Border.all(
-       color: Colors.black,
-        width: 8,
-    ),
-    borderRadius: BorderRadius.circular(12),
+         ),
+  
+    boxShadow: [
+      BoxShadow(
+       offset: Offset(0.0,12.0),
+       color: Color.fromRGBO(16, 20, 188, 1.0),
+       blurRadius: 25.0,
+       spreadRadius: 3.0,
+
+      )
+      
+    ],
+     shape:BoxShape.circle,
+     gradient: RadialGradient(
+       colors:[
+         Color.fromRGBO(7, 102, 255, 1.0),
+         Color.fromRGBO(7, 102, 6, 1.0)
+       ]
+        )
 
       ),
     )
