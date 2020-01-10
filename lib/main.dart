@@ -55,7 +55,7 @@ class Home extends StatelessWidget{
       tabs: <Widget>[
       Tab(icon: Icon(Icons.local_florist)),
       Tab(icon: Icon(Icons.change_history)),
-      Tab(icon: Icon(Icons.directions)),
+      Tab(icon: Icon(Icons.directions_bike)),
     ],
     ),
   ),
@@ -64,7 +64,7 @@ class Home extends StatelessWidget{
       children: <Widget>[
        ListViewDemo(),
        BasicDemo(),
-        LayoutDemo()
+       LayoutDemo()
       ],
      
       ),
