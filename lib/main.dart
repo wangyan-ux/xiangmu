@@ -3,6 +3,8 @@ import './demo/drawer_demo.dart';
 import './demo/bottomnavigation.dart';
 import './demo/listview_demo.dart';
 import './demo/basic_demo.dart';
+import './demo/layout_demo.dart';
+
 void main()=>runApp(App());
   
 
@@ -11,8 +13,8 @@ class App extends StatelessWidget{
  @override
   Widget build(BuildContext context) {
              
-  return MaterialApp(
-    debugShowCheckedModeBanner: false,
+  return MaterialApp( 
+debugShowCheckedModeBanner: false,
 home:Home(),
 theme: ThemeData(
 primarySwatch: Colors.blue,
@@ -62,7 +64,7 @@ class Home extends StatelessWidget{
       children: <Widget>[
        ListViewDemo(),
        BasicDemo(),
-        Icon(Icons.directions,size: 128.0,color:Colors.black12)
+        LayoutDemo()
       ],
      
       ),
