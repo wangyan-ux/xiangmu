@@ -2,28 +2,23 @@ import 'package:flutter/material.dart';
 import '../model/post.dart';
 
 class ViewDemo extends StatelessWidget{
-  List<Widget> _buildTile(int lentgh){
-    return List.generate(lentgh, (int index){
-        return
-       Container(  
-         alignment: Alignment(0.0,0.0),
-         color: Colors.yellow,
-         child: Text( 
-           'item',
-           style: TextStyle(fontSize: 18.0,color: Colors.pink),
-         ),
-       );
-    
-    });
+  Widget _gridviewBuild(BuildContext context,int index){
+      return Container(  
+        child: Image.network(posts[index].imageUrl),
+      );
   }
-
- @override
+  @override
   Widget build(BuildContext context) {
-   return GridView.count(
-     crossAxisCount: 3,
-     crossAxisSpacing: 16.0,
-     mainAxisSpacing: 16.0,
-     children: _buildTile(100),
-   );
-  }
+    return GridView.builder(
+      itemCount: posts.length,
+      itemBuilder: _gridviewBuild,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        mainAxisSpacing: 16.0,
+        crossAxisSpacing: 16.0
+      
+      )
+    );
+  
+}
 }
