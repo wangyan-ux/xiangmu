@@ -2,35 +2,28 @@ import 'package:flutter/material.dart';
 import '../model/post.dart';
 
 class ViewDemo extends StatelessWidget{
-  Widget _pageItemBuild(BuildContext context,int index){
-    return Stack(
-      children: <Widget>[
-        SizedBox.expand(  
-         child: Image.network(posts[index].imageUrl,fit: BoxFit.cover,),
-        ),
-        Positioned( 
-          bottom: 8.0,
-          left: 8.0,
-          child: Column(  
-            mainAxisAlignment:MainAxisAlignment.start,
-            children: <Widget>[
-              Text( 
-                posts[index].title
-              ),
-              Text(  
-                posts[index].author
-              )
-            ],
-          ),
-        )
-      ],
-    );
+  List<Widget> _buildTile(int lentgh){
+    return List.generate(lentgh, (int index){
+        return
+       Container(  
+         alignment: Alignment(0.0,0.0),
+         color: Colors.yellow,
+         child: Text( 
+           'item',
+           style: TextStyle(fontSize: 18.0,color: Colors.pink),
+         ),
+       );
+    
+    });
   }
-  @override
+
+ @override
   Widget build(BuildContext context) {
-    return   PageView.builder(
-      itemCount: posts.length,
-      itemBuilder: _pageItemBuild
-    );
+   return GridView.count(
+     crossAxisCount: 3,
+     crossAxisSpacing: 16.0,
+     mainAxisSpacing: 16.0,
+     children: _buildTile(100),
+   );
   }
 }
