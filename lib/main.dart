@@ -5,7 +5,7 @@ import './demo/listview_demo.dart';
 import './demo/basic_demo.dart';
 import './demo/layout_demo.dart';
 import './demo/view_demo.dart';
-
+import './demo/form_demo.dart';
 void main()=>runApp(App());
 
 class App extends StatelessWidget{
@@ -14,7 +14,11 @@ class App extends StatelessWidget{
              
   return MaterialApp( 
 debugShowCheckedModeBanner: false,
-home:Home(),
+initialRoute:'/form' ,
+routes: {
+  '/':(context)=>Home(),
+  '/form':(context)=>FormDemo()
+},
 theme: ThemeData(
 primarySwatch: Colors.blue,
 highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
