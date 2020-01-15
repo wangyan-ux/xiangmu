@@ -3,13 +3,18 @@ import '../model/post.dart';
 
 class ListViewDemo extends StatelessWidget{
   Widget _listItemBuild (BuildContext context ,int index){
-    return Container(
+    return Stack(
+    children: <Widget>[
+      Container(
       color:Colors.white,
       margin: EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          Image.network(posts[index].imageUrl),
-          SizedBox(height: 16.00),
+          AspectRatio( 
+            aspectRatio: 16/9,
+            child:Image.network(posts[index].imageUrl,fit: BoxFit.cover) ,
+          ),
+          
           Text(
             posts[index].title,
             style: Theme.of(context).textTheme.title,
@@ -23,7 +28,21 @@ class ListViewDemo extends StatelessWidget{
         ]
         
      ) 
-     );
+     ),
+     Positioned.fill(
+       child: Material( 
+         color: Colors.transparent,
+         child: InkWell( 
+           splashColor: Colors.white.withOpacity(0.3),
+           highlightColor: Colors.white.withOpacity(0.1),
+           onTap: (){debugPrint('nihao');},
+         ),
+       ),
+     )
+    ],
+    
+    
+    );
   }
   @override
   Widget build(BuildContext context) {
