@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wangyan_flutter/demo/luyou_demo.dart';
 import '../model/post.dart';
-
+import '../demo/luyou_demo.dart';
+ 
 class ListViewDemo extends StatelessWidget{
   Widget _listItemBuild (BuildContext context ,int index){
     return Stack(
@@ -35,7 +37,13 @@ class ListViewDemo extends StatelessWidget{
          child: InkWell( 
            splashColor: Colors.white.withOpacity(0.3),
            highlightColor: Colors.white.withOpacity(0.1),
-           onTap: (){debugPrint('nihao');},
+           onTap: (){
+            Navigator.of(context).push(
+              MaterialPageRoute(  
+                builder: (context)=> PostShow(post: posts[index]),
+              )
+            );
+             },
          ),
        ),
      )
