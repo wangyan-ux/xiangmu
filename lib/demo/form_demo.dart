@@ -76,6 +76,11 @@ class _TextFormFiledDemoState extends State<TextFormFiledDemo> {
       { _formkey.currentState.save();
         debugPrint(username);
        debugPrint(password);
+       Scaffold.of(context).showSnackBar(
+        SnackBar( 
+          content: Text('正在注册...'),
+        )
+       );
       }
     else{
       setState(() {
