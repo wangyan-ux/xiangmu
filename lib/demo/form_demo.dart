@@ -10,7 +10,7 @@ class FormDemo extends StatelessWidget {
       data:Theme.of(context).copyWith(
         primaryColor: Colors.black
       ),
-      child: TextFiledDemo(),
+      child: TextFormFiledDemo(),
       ),
     );
   }
@@ -21,6 +21,22 @@ class TextFiledDemo extends StatefulWidget {
 }
 
 class _TextFiledDemoState extends State<TextFiledDemo> {
+  final _textEditingController=TextEditingController();
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+  @override
+  void initState() {
+    super.initState();
+    //_textEditingController.text='hii';
+    _textEditingController.addListener(
+      (){
+        debugPrint('${_textEditingController.text}');
+      }
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,17 +44,92 @@ class _TextFiledDemoState extends State<TextFiledDemo> {
         mainAxisAlignment: MainAxisAlignment.center,  
         children: <Widget>[
         TextField(
+        
           decoration: InputDecoration(  
-            icon: Icon(Icons.subject),
+           icon: Icon(Icons.subject),
             labelText: 'title',
             border: OutlineInputBorder(),
             hintText: ' wangyan' ,
             filled: true,
-
+            
           ),
+          controller: _textEditingController,
         )
         ],
       ),
+    );
+  }
+}
+
+class TextFormFiledDemo extends StatefulWidget {
+  @override
+  _TextFormFiledDemoState createState() => _TextFormFiledDemoState();
+}
+
+class _TextFormFiledDemoState extends State<TextFormFiledDemo> {
+  final _formkey=GlobalKey<FormState>();
+  String username,password; 
+  void submitRegisterForm(){
+    _formkey.currentState.validate();
+    _formkey.currentState.save();
+    debugPrint(username);
+    debugPrint(password);
+
+  }
+  String validatorUserName(value){
+   if(value.isEmpty){
+     return '用户名不能为空';
+   }
+   return null;
+  }
+  String validatorPassWord(value){
+   if(value.isEmpty){
+     return '密码不能为空';
+   }
+   return null;
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Form( 
+          key: _formkey,
+          child:
+           Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+        TextFormField(
+            decoration: InputDecoration(  
+              labelText: 'Username',
+              helperText: 'nihsng ',
+            ),
+            onSaved: (value){username=value;},
+            validator: validatorUserName,
+
+          ),
+      
+           TextFormField(
+             obscureText: true,
+            decoration: InputDecoration(  
+              labelText: 'Password',
+              helperText: 'nihsng ',
+            ),
+            onSaved: (value){password=value;},
+            validator: validatorPassWord,
+           ),
+           SizedBox(height: 32.0,),
+           Container(
+             width: double.infinity,
+             child: RaisedButton( 
+               child: Text('Register',style:TextStyle(color: Colors.white)),
+               onPressed:submitRegisterForm,
+               
+               color: Colors.blue,
+             ),
+          
+           )
+        ],
+      ),
+     
     );
   }
 }
