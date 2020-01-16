@@ -69,12 +69,19 @@ class TextFormFiledDemo extends StatefulWidget {
 class _TextFormFiledDemoState extends State<TextFormFiledDemo> {
   final _formkey=GlobalKey<FormState>();
   String username,password; 
-  void submitRegisterForm(){
-    _formkey.currentState.validate();
-    _formkey.currentState.save();
-    debugPrint(username);
-    debugPrint(password);
+  bool _autovalidate=false;
 
+  void submitRegisterForm(){
+     if( _formkey.currentState.validate())
+      { _formkey.currentState.save();
+        debugPrint(username);
+       debugPrint(password);
+      }
+    else{
+      setState(() {
+        _autovalidate=true;
+      });
+    }
   }
   String validatorUserName(value){
    if(value.isEmpty){
@@ -104,6 +111,7 @@ class _TextFormFiledDemoState extends State<TextFormFiledDemo> {
             ),
             onSaved: (value){username=value;},
             validator: validatorUserName,
+            autovalidate: _autovalidate,
 
           ),
       
@@ -115,6 +123,8 @@ class _TextFormFiledDemoState extends State<TextFormFiledDemo> {
             ),
             onSaved: (value){password=value;},
             validator: validatorPassWord,
+            autovalidate: _autovalidate,
+
            ),
            SizedBox(height: 32.0,),
            Container(
